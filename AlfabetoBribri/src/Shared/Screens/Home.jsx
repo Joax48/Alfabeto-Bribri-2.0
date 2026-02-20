@@ -11,12 +11,11 @@ import {
 import { Link as RouterLink } from 'react-router-dom';
 
 import Alphabet from '../../Assets/Alfabeto.jpg';
-import Game from '../../Assets/Juego.jpeg';
+import Game from '../../Assets/Juego.jpg';
 
 function HomePage() {
   return (
     <Box
-      minH="100vh"
       bg="white"
       position="relative"
       overflow="hidden"
@@ -35,7 +34,7 @@ function HomePage() {
       />
       <Box
         position="absolute"
-        bottom="-100px"
+        bottom="0px"
         right="-100px"
         width="300px"
         height="300px"
@@ -50,8 +49,10 @@ function HomePage() {
         zIndex={1}
         justify="center"
         align="center"
-        minH="100vh"
+        minH="calc(100vh - 480px)" // ajuste de altura por seccion
         px={6}
+        pt="40px"
+        py="40px" // cambio nuevo de padding
       >
         <SimpleGrid
           columns={{ base: 1, lg: 2 }}
@@ -112,8 +113,8 @@ function HomePage() {
                   src={Alphabet}
                   alt="Alfabeto"
                   width="100%"
-                  height="280px"
-                  objectFit="cover"
+                  maxH="280px"
+                  objectFit="contain"
                   borderRadius="0 0 lg lg"
                 />
               </Link>
@@ -173,8 +174,8 @@ function HomePage() {
                   src={Game}
                   alt="Aprende Jugando"
                   width="100%"
-                  height="280px"
-                  objectFit="cover"
+                  maxH="280px"
+                  objectFit="contain"
                   borderRadius="0 0 lg lg"
                 />
               </Link>
