@@ -56,46 +56,91 @@ function Character() {
   const normalizeChar = (char) =>
     char.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
 
-  const renderHighlightedWord = (word) => {
-    const prefix = "seˈ";
-    const normalizedWord = normalizeChar(word);
-    const normalizedLetter = normalizeChar(decodedLetter);
+  const COMPOUND_CONSONANTS = ["tch", "sh", "rr", "tk", "ts", "ch", "'", "ˈ"];
+  
+  const isApostrophe = (char) => char === "'";
 
-    if (normalizedWord.startsWith(normalizeChar(prefix))) {
-      return (
-        <>
-          <chakra.span fontWeight="normal" fontSize="lg" color="gray.400">
-            {word.slice(0, 3)}
-          </chakra.span>
-          {splitter.splitGraphemes(word.slice(3)).map((grapheme, i) => (
-            <chakra.span
-              key={i}
-              fontWeight={
-                normalizeChar(grapheme) === normalizedLetter ? "bold" : "normal"
-              }
-              fontSize="lg"
-              color="black"
-            >
-              {grapheme}
+  const TONE_MARKS = {
+    "´": "\u0301", // agudo
+    "`": "\u0300", // grave
+    "ˇ": "\u030C", // carón
+    "ˆ": "\u0302", // circunflejo
+  };
+
+  const hasTone = (char, tone) => {
+    const nfd = char.normalize("NFD");
+    const mark = TONE_MARKS[tone];
+    return mark ? nfd.includes(mark) : false;
+  };
+
+
+const renderHighlightedWord = (word) => {
+  const graphemes = splitter.splitGraphemes(word);
+  const normalizedLetter = normalizeChar(decodedLetter);
+
+  const result = [];
+  let i = 0;
+
+  while (i < graphemes.length) {
+    let rendered = false;
+
+    // Consonantes compuestas
+    if (catParam === "consonante") {
+      for (const compound of COMPOUND_CONSONANTS) {
+        const size = splitter.splitGraphemes(compound).length;
+        const slice = graphemes.slice(i, i + size).join("");
+
+        if (slice === decodedLetter) {
+          result.push(
+            <chakra.span key={i} fontWeight="bold" fontSize="lg">
+              {slice}
             </chakra.span>
-          ))}
-        </>
-      );
+          );
+          i += size;
+          rendered = true;
+          break;
+        }
+      }
     }
 
-    return splitter.splitGraphemes(word).map((grapheme, i) => (
+    if (rendered) continue;
+
+    const g = graphemes[i];
+
+    let highlight = false;
+
+    // Tonos
+    if (catParam === "tono") {
+      highlight = hasTone(g, decodedLetter);
+    }
+
+
+    // Vocales
+    if (catParam === "vocal") {
+      highlight = normalizeChar(g) === normalizedLetter;
+    }
+
+    // Consonantes simples, ', ˈ
+    if (catParam === "consonante") {
+      highlight = g === decodedLetter;
+    }
+
+    result.push(
       <chakra.span
         key={i}
-        fontWeight={
-          normalizeChar(grapheme) === normalizedLetter ? "bold" : "normal"
-        }
+        fontWeight={highlight ? "bold" : "normal"}
         fontSize="lg"
-        color="black"
       >
-        {grapheme}
+        {g}
       </chakra.span>
-    ));
-  };
+    );
+
+    i++;
+  }
+
+  return result;
+};
+
 
   const playAudio = (audioUrl) => {
     new Audio(audioUrl).play();
@@ -309,6 +354,7 @@ function Character() {
         >
           <TabList mb={{ base: 3, md: 4 }}>
             <Tab
+              onClick={() => navigate("/alfabeto?cat=vocal")}
               color="black"
               _selected={{ color: "white", bg: "#00C0F3" }}
               fontSize={{ base: "sm", md: "md" }}
@@ -318,6 +364,7 @@ function Character() {
               Vocales
             </Tab>
             <Tab
+              onClick={() => navigate("/alfabeto?cat=consonante")}
               color="black"
               _selected={{ color: "white", bg: "#00C0F3" }}
               fontSize={{ base: "sm", md: "md" }}
@@ -327,6 +374,7 @@ function Character() {
               Consonantes
             </Tab>
             <Tab
+              onClick={() => navigate("/alfabeto?cat=tono")}
               color="black"
               _selected={{ color: "white", bg: "#00C0F3" }}
               fontSize={{ base: "sm", md: "md" }}

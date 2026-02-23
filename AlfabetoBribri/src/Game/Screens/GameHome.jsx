@@ -38,7 +38,7 @@ function GameHomePage() {
 
   return (
     <Flex
-      minH="100vh"
+      minH="65vh" // base para ocupar toda la altura de la pantalla
       bg="white"
       align="center"
       justify="center"
@@ -144,7 +144,7 @@ function GameHomePage() {
                       alt={title}
                       width="100%"
                       height="100%"
-                      objectFit="cover"
+                      objectFit="contain"
                       minH="280px"
                     />
                   </Link>

@@ -1,4 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Box, Flex } from "@chakra-ui/react";
+
 import Header from "./Shared/Components/Header"
 import Home from "./Shared/Screens/Home";
 import Alphabet from "./Alphabet/Screens/Alphabet"
@@ -16,19 +18,23 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <Header />
-        <ScrollToTop />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/alfabeto" element={<Alphabet />} />
-          <Route path="/caracter/:letra" element={<Character />} />
-          <Route path="/aprende" element={<Game />} />
-          <Route path="/juego/:gameMode" element={<GameMode />} />
-          <Route path="/recurso" element={<Resource />} />
-          <Route path="/creditos" element={<Credits />} />
-          <Route path="/tc-625" element={<AboutUs />} />
-        </Routes>
-        <Footer />
+       <Flex direction="column" minH="100vh">
+          <Header />
+          <ScrollToTop />
+          <Box flex="1">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/alfabeto" element={<Alphabet />} />
+              <Route path="/caracter/:letra" element={<Character />} />
+              <Route path="/aprende" element={<Game />} />
+              <Route path="/juego/:gameMode" element={<GameMode />} />
+              <Route path="/recurso" element={<Resource />} />
+              <Route path="/creditos" element={<Credits />} />
+              <Route path="/tc-625" element={<AboutUs />} />
+            </Routes>
+          </Box>
+          <Footer />
+        </Flex>
       </BrowserRouter>
       <ToastContainer />
     </>

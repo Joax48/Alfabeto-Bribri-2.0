@@ -10,6 +10,8 @@ import {
   AlertIcon,
   AlertDescription
 } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
+import { FaArrowLeft } from "react-icons/fa";
 import { FaVolumeUp, FaPlay, FaPause } from "react-icons/fa";
 import { useRef, useState, useEffect } from "react";
 
@@ -20,6 +22,7 @@ function QuestionDisplay({ type, source, instructions }) {
   const [audioError, setAudioError] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
   const [imageError, setImageError] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (type === "audio" && audioRef.current) {
@@ -77,6 +80,7 @@ function QuestionDisplay({ type, source, instructions }) {
 
   return (
     <Box w="full" userSelect="none" position="relative">
+
       <VStack spacing={6}>
         <Box
           w="full"
@@ -104,6 +108,25 @@ function QuestionDisplay({ type, source, instructions }) {
             borderRadius: "2xl"
           }}
         >
+        <Button
+          position="absolute"
+          top={4}
+          left={4}
+          w="36px"
+          h="36px"
+          minW="36px"
+          p={0}
+          bg="white"
+          color="gray.600"
+          borderRadius="full"
+          boxShadow="md"
+          onClick={() => navigate(-1)}
+          _hover={{ bg: "gray.100", transform: "translateY(-1px)" }}
+          transition="all 0.2s"
+          zIndex={3}
+        >
+          <Icon as={FaArrowLeft} boxSize={3} />
+        </Button>
           {type === "image" ? (
             <Box position="relative" textAlign="center">
               {!imageLoaded && !imageError && (
