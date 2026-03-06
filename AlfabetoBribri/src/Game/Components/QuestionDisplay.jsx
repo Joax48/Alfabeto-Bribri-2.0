@@ -227,11 +227,13 @@ function QuestionDisplay({ type, source, instructions }) {
                   onClick={handlePlayAudio}
                   bg={isPlaying ? "#0099CC" : "#00C0F3"}
                   color="white"
-                  size="lg"
-                  px={8}
-                  py={6}
+                  w="full"
+                  maxW="320px"
+                  size={{ base: "md", md: "lg" }}
+                  px={{ base: 4, md: 8 }}
+                  py={{ base: 4, md: 6 }}
                   borderRadius="full"
-                  fontSize="lg"
+                  fontSize={{ base: "md", md: "lg" }}
                   fontWeight="bold"
                   leftIcon={
                     !audioLoaded ? (
