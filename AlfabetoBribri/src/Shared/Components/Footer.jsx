@@ -50,26 +50,18 @@ function Footer() {
             <VStack align="flex-start" spacing={3}>
               <HStack spacing={2}>
                 <Icon as={FiGlobe} color="teal.300" />
-                <Text fontSize="md" fontWeight="semibold">
-                  Alfabeto bribri
+                <Text fontSize="sm" fontWeight="semibold">
+                  Seˈ (uj)tö̀ shtók. Alfabeto bribri
                 </Text>
               </HStack>
 
               <Text fontSize="xs" color="gray.300" lineHeight="1.4">
-                Plataforma educativa desarrollada por el TC-625 Lenguas y
-                tradiciones orales de Costa Rica, dedicada a preservar y
-                promover el idioma bribri.
+                Recurso didáctico web para aprender y practicar el sistema de escritura de la lengua bribri más utilizado. 
               </Text>
             </VStack>
 
             {/* COLUMNA 3: EQUIPO */}
             <VStack align="flex-start" spacing={3}>
-              <HStack spacing={2}>
-                <Icon as={FiUsers} color="teal.300" />
-                <Heading as="h3" size="sm">
-                  Nuestro equipo
-                </Heading>
-              </HStack>
 
               <Box>
                 <HStack spacing={2} mb={2}>
@@ -121,7 +113,7 @@ function Footer() {
                   color="teal.300"
                   _hover={{ textDecoration: "underline" }}
                 >
-                  tc625.efll@ucr.ac.cr
+                  dipalicori@ucr.ac.cr 
                 </Link>
               </HStack>
 
@@ -148,7 +140,7 @@ function Footer() {
         <Box maxW="1200px" mx="auto" px={6}>
           <Flex justify="center">
             <Text fontSize="xs" color="gray.500">
-              &copy; {currentYear} Alfabeto bribri.
+              &copy; {currentYear}  Seˈ (uj)tö̀ shtók. Alfabeto bribri.
             </Text>
           </Flex>
         </Box>

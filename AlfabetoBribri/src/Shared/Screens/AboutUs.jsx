@@ -5,7 +5,6 @@ import {
   Heading,
   Text,
   Divider,
-  Badge,
   Stack,
   Link,
   Card,
@@ -15,29 +14,21 @@ import {
 function AboutUs() {
   return (
     <Box
-      minH="100vh"
       bg="white"
       userSelect="none"
       py={{ base: 10, md: 16 }}
       px={{ base: 4, md: 6 }}
     >
       <Container maxW="4xl">
-        <VStack spacing={6} textAlign="center">
-          <Text fontSize={{ base: "md", md: "lg" }} color="gray.700">
-            El <strong>TC-625 “Lenguas y tradiciones orales de Costa Rica”</strong>, adscrito a la
-            Escuela de Filología, Lingüística y Literatura y a la Vicerrectoría de Acción Social de
-            la <strong>Universidad de Costa Rica</strong>, es un proyecto de trabajo comunal universitario
-            que colabora con miembros de diversas comunidades etnolingüísticas del país con el
-            objetivo de fortalecer la presencia de sus lenguas y culturas autóctonas mediante
-            iniciativas de <em>fortalecimiento</em>, <em>promoción</em>, <em>documentación</em>,
-            <em> visibilización</em>, <em>revalorización</em>, <em>enseñanza</em> y
-            <em> revitalización</em>.
-          </Text>
+        {/* Encabezado */}
+        <VStack spacing={4} textAlign="center" mb={2}>
+          <Heading size="xl" color="black">
+            Acerca del TC-625
+          </Heading>
         </VStack>
 
-        <Divider my={10} />
+        <Divider my={8} />
 
-        {/* Tarjeta de detalle */}
         <Card
           variant="outline"
           borderColor="gray.200"
@@ -47,57 +38,80 @@ function AboutUs() {
         >
           <CardBody p={{ base: 6, md: 8 }}>
             <Stack spacing={6}>
+
+              {/* Descripción */}
               <Box>
-                <Heading size="md" color="black" mb={2}>
-                  Propósito
-                </Heading>
                 <Text color="gray.700" lineHeight="1.7">
-                  Impulsar acciones colaborativas con comunidades etnolingüísticas de Costa Rica
-                  para preservar, enseñar y revitalizar las lenguas y tradiciones orales, promoviendo
-                  su visibilidad y revalorización en espacios académicos y comunitarios.
+                  El proyecto de trabajo comunal universitario{" "}
+                  <Text as="span" fontWeight="semibold">
+                    TC-625 “Lenguas y tradiciones orales de Costa Rica”
+                  </Text>
+                  , adscrito a la{" "}
+                  <Text as="span" fontWeight="semibold">
+                    Escuela de Filología, Lingüística y Literatura
+                  </Text>{" "}
+                  y a la{" "}
+                  <Text as="span" fontWeight="semibold">
+                    Vicerrectoría de Acción Social de la Universidad de Costa Rica
+                  </Text>
+                  , colabora con diversas comunidades etnolingüísticas de Costa Rica con el objetivo de{" "}
+                  <Text as="span" fontWeight="semibold">
+                    fortalecer la presencia de sus lenguas y culturas autóctonas
+                  </Text>{" "}
+                  mediante iniciativas de fortalecimiento, promoción, documentación, visibilización, revalorización, enseñanza y revitalización ideadas, elaboradas e implementadas en consulta con miembros de los respectivos pueblos. El proyecto promueve la{" "}
+                  <Text as="span" fontWeight="semibold">
+                    participación activa de adultos, jóvenes y niños
+                  </Text>{" "}
+                  de las comunidades con la que trabajamos.
                 </Text>
               </Box>
 
               <Box>
-                <Heading size="md" color="black" mb={2}>
-                  Adscripción
+                <Text color="gray.700" lineHeight="1.7">
+                  Uno de los propósitos más importantes del proyecto es la{" "}
+                  <Text as="span" fontWeight="semibold">
+                    creación de recursos didácticos y de consulta
+                  </Text>{" "}
+                  adecuados para la población y elaborados con criterios técnicos de{" "}
+                  <Text as="span" fontWeight="semibold">
+                    diseño gráfico, lingüística aplicada
+                  </Text>{" "}
+                  (didáctica de la lengua y revitalización lingüística) y uso de nuevas tecnologías. El presente sitio web constituye una muestra de esta forma de proceder. Esperamos que sea de utilidad para los{" "}
+                  <Text as="span" fontWeight="semibold">
+                    miembros del pueblo bribri
+                  </Text>
+                  , así como para todas las personas interesadas en la lengua y la cultura de este grupo.
+                </Text>
+              </Box>
+
+              {/* Firma */}
+              <Box pt={4}>
+                <Heading size="sm" color="black" mb={1}>
+                  Luis Serrato Pineda
                 </Heading>
                 <Text color="gray.700">
-                  Escuela de Filología, Lingüística y Literatura &middot; Vicerrectoría de Acción Social
-                  &middot; Universidad de Costa Rica.
+                  Coordinador del proyecto
                 </Text>
-              </Box>
-
-              <Box>
-                <Heading size="md" color="black" mb={2}>
-                  Coordinación
-                </Heading>
-                <Text color="gray.800" fontWeight="semibold">
-                  Luis Serrato Pineda
+                <Text color="gray.700">
+                  Universidad de Costa Rica
                 </Text>
-              </Box>
-
-              <Box>
-                <Heading size="md" color="black" mb={2}>
-                  Contacto
-                </Heading>
-                <VStack align="start" spacing={1}>
+                <Text color="gray.700">
+                  Contacto:{" "}
                   <Link
-                    href="mailto:dipalicori.efll@ucr.ac.cr"
+                    href="mailto:dipalicori@ucr.ac.cr"
                     color="#00C0F3"
                     _hover={{ textDecoration: "underline", color: "#0099CC" }}
                   >
-                    dipalicori.efll@ucr.ac.cr
+                    dipalicori@ucr.ac.cr
                   </Link>
-                  <Link
-                    href="mailto:TC625.EFLL@ucr.ac.cr"
-                    color="#00C0F3"
-                    _hover={{ textDecoration: "underline", color: "#0099CC" }}
-                  >
-                    TC625.EFLL@ucr.ac.cr
-                  </Link>
-                </VStack>
+                </Text>
               </Box>
+
+              {/* Año */}
+              <Box textAlign="center" pt={4}>
+                <Text color="gray.500">2026</Text>
+              </Box>
+
             </Stack>
           </CardBody>
         </Card>
