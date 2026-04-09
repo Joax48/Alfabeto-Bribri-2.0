@@ -9,7 +9,12 @@ import {
   Link,
   Card,
   CardBody,
+  Image,
+  HStack,
 } from "@chakra-ui/react";
+import LogoUCR from "../../Assets/FirmaUCR2.png";
+import LogoVAS from "../../Assets/LogoVAS.png";
+import LogoEFLL from "../../Assets/LogoEFLL.png";
 
 function AboutUs() {
   return (
@@ -42,45 +47,27 @@ function AboutUs() {
               {/* Descripción */}
               <Box>
                 <Text color="gray.700" lineHeight="1.7">
-                  El proyecto de trabajo comunal universitario{" "}
-                  <Text as="span" fontWeight="semibold">
-                    TC-625 “Lenguas y tradiciones orales de Costa Rica”
-                  </Text>
-                  , adscrito a la{" "}
-                  <Text as="span" fontWeight="semibold">
-                    Escuela de Filología, Lingüística y Literatura
-                  </Text>{" "}
-                  y a la{" "}
-                  <Text as="span" fontWeight="semibold">
-                    Vicerrectoría de Acción Social de la Universidad de Costa Rica
-                  </Text>
-                  , colabora con diversas comunidades etnolingüísticas de Costa Rica con el objetivo de{" "}
-                  <Text as="span" fontWeight="semibold">
-                    fortalecer la presencia de sus lenguas y culturas autóctonas
-                  </Text>{" "}
-                  mediante iniciativas de fortalecimiento, promoción, documentación, visibilización, revalorización, enseñanza y revitalización ideadas, elaboradas e implementadas en consulta con miembros de los respectivos pueblos. El proyecto promueve la{" "}
-                  <Text as="span" fontWeight="semibold">
-                    participación activa de adultos, jóvenes y niños
-                  </Text>{" "}
-                  de las comunidades con la que trabajamos.
+                  El proyecto de trabajo comunal universitario TC-625 &ldquo;Lenguas y tradiciones orales de Costa Rica&rdquo;,
+                  adscrito a la Escuela de Filolog&iacute;a, Ling&uuml;&iacute;stica y Literatura y a la
+                  Vicerrector&iacute;a de Acci&oacute;n Social de la Universidad de Costa Rica,
+                  colabora con diversas comunidades etnoling&uuml;&iacute;sticas de Costa Rica con el objetivo de
+                  fortalecer la presencia de sus lenguas y culturas aut&oacute;ctonas mediante iniciativas de
+                  fortalecimiento, promoci&oacute;n, documentaci&oacute;n, visibilizaci&oacute;n, revalorizaci&oacute;n,
+                  ense&ntilde;anza y revitalizaci&oacute;n ideadas, elaboradas e implementadas en consulta con miembros
+                  de los respectivos pueblos. El proyecto promueve la participaci&oacute;n activa de adultos,
+                  j&oacute;venes y ni&ntilde;os de las comunidades con la que trabajamos.
                 </Text>
               </Box>
 
               <Box>
                 <Text color="gray.700" lineHeight="1.7">
-                  Uno de los propósitos más importantes del proyecto es la{" "}
-                  <Text as="span" fontWeight="semibold">
-                    creación de recursos didácticos y de consulta
-                  </Text>{" "}
-                  adecuados para la población y elaborados con criterios técnicos de{" "}
-                  <Text as="span" fontWeight="semibold">
-                    diseño gráfico, lingüística aplicada
-                  </Text>{" "}
-                  (didáctica de la lengua y revitalización lingüística) y uso de nuevas tecnologías. El presente sitio web constituye una muestra de esta forma de proceder. Esperamos que sea de utilidad para los{" "}
-                  <Text as="span" fontWeight="semibold">
-                    miembros del pueblo bribri
-                  </Text>
-                  , así como para todas las personas interesadas en la lengua y la cultura de este grupo.
+                  Uno de los prop&oacute;sitos m&aacute;s importantes del proyecto es la creaci&oacute;n de recursos
+                  did&aacute;cticos y de consulta adecuados para la poblaci&oacute;n y elaborados con criterios
+                  t&eacute;cnicos de dise&ntilde;o gr&aacute;fico, ling&uuml;&iacute;stica aplicada (did&aacute;ctica
+                  de la lengua y revitalizaci&oacute;n ling&uuml;&iacute;stica) y uso de nuevas tecnolog&iacute;as.
+                  El presente sitio web constituye una muestra de esta forma de proceder. Esperamos que sea de
+                  utilidad para los miembros del pueblo bribri, as&iacute; como para todas las personas interesadas
+                  en la lengua y la cultura de este grupo.
                 </Text>
               </Box>
 
@@ -106,6 +93,13 @@ function AboutUs() {
                   </Link>
                 </Text>
               </Box>
+
+              {/* Logos institucionales */}
+              <HStack spacing={8} justify="center" pt={4} flexWrap="wrap">
+                <Image src={LogoUCR} alt="Universidad de Costa Rica" maxH="60px" objectFit="contain" />
+                <Image src={LogoVAS} alt="Vicerrectoria de Accion Social" maxH="60px" objectFit="contain" />
+                <Image src={LogoEFLL} alt="Escuela de Filologia, Linguistica y Literatura" maxH="60px" objectFit="contain" />
+              </HStack>
 
               {/* Año */}
               <Box textAlign="center" pt={4}>
